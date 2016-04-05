@@ -1,7 +1,6 @@
 [mysqld]
-#bind-address = {{getv "/self/container/primary_ip"}}
-# Bind to 0.0.0.0 for clustercheck
-bind-address = 0.0.0.0
+# do not bind to 0.0.0.0 as it will break wsrep
+bind-address={{getv "/self/container/primary_ip"}}
 wsrep_provider=/usr/lib/libgalera_smm.so
 wsrep_node_name = {{getv "/self/container/name"}}
 wsrep_cluster_name="{{getv "/self/stack/name"}}"
